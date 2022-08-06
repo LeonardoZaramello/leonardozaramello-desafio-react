@@ -1,0 +1,40 @@
+html {
+  font-family: Helvetica, Verdana, sans-serif;
+  background-color: rgb(232, 232, 232);
+}
+
+.principal-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-content: space-around;
+  margin: 6rem auto;
+}
+
+.search-container {
+  background-color: aqua;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-box {
+  height: 20px;
+  border-radius: 5px;
+  border: 1px rgb(150, 150, 150) solid;
+}
+
+.input-box {
+  align-self: center;
+  margin: 1px;
+  border-radius: 5px;
+  border: 1px rgb(150, 150, 150) solid;
+}
+
+label {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
