@@ -13,7 +13,6 @@ html {
 }
 
 .search-container {
-  background-color: aqua;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -26,11 +25,22 @@ html {
   border: 1px rgb(150, 150, 150) solid;
 }
 
-.input-box {
+.search-button {
   align-self: center;
+  width: 75px;
   margin: 1px;
   border-radius: 5px;
   border: 1px rgb(150, 150, 150) solid;
+  cursor: pointer;
+}
+
+.search-button:active {
+  background-color: #8c8c8c;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 12px;
 }
 
 label {

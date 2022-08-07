@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/HomePageStyle.css';
 
@@ -25,7 +25,7 @@ function HomePage() {
           />
         </label>
         <button
-            className="input-box"
+            className="search-button"
             onClick={ () => goTo(`/${userName}`) }
             type="button"
           >
