@@ -20,22 +20,23 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
 }
 
 .left-container {
-  width: 300px;
+  width: 250px;
   align-items: center;
   margin-bottom: 50px;
 }
 
 .user-name-box {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
 }
 
 h6 {
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 400;
   color: gray;
 }
@@ -43,11 +44,11 @@ h6 {
 .follow-btn {
   margin-top: 15px;
   width: 100%;
-  height: 20px;
   border-radius: 3px;
   border: 1px rgb(150, 150, 150) solid;
-  font-size: 10px;
+  font-size: 15px;
   background-color: rgb(220, 220, 220);
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -61,7 +62,7 @@ h6 {
 }
 
 .follows > p{
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .user-infos {
@@ -72,7 +73,11 @@ h6 {
 }
 
 .user-infos > p {
-  font-size: 10px;
+  font-size: 15px;
+}
+
+.bio-info {
+  font-size: 15px;
 }
 
 .right-container {

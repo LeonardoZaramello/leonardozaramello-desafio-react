@@ -5,6 +5,7 @@ import '../Styles/UserPageStyle.css';
 import stacksColors from '../Utils/StacksColors';
 import gitforkedSvg from '../Images/forked.svg';
 import scaleSvg from '../Images/scale.svg';
+import { convertTime } from '../Utils/ConvertDateTime';
 
 function UserPage() {
   const {userName} = useParams();
@@ -16,7 +17,6 @@ function UserPage() {
   const [userRepositories, setUserRepositories] = useState([]);
 
   console.log('renderizou');
-  console.log(userFollowers);
 
   useEffect(() => {
 
@@ -40,14 +40,6 @@ function UserPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const formatDate = (date) => {
-    const newDate = new Date(date);
-    console.log(typeof newDate);
-    return (
-      <span>Updated on {date}</span>
-    )
-  }
-
 
   return(
     <div className="main-container">
@@ -61,12 +53,12 @@ function UserPage() {
 
         <button className="follow-btn" type="button">Follow</button>
 
-        <p>{userInfos.bio}</p>
+        <p className="bio-info">{userInfos.bio}</p>
         
         <div className="follows">
           <p>👥{userFollowers.length} followers</p>
-          <p>&nbsp;· {userFollowing.length} following</p>
-          <p>&nbsp;· ⭐ {userStars.length}</p>
+          <p> · {userFollowing.length} following</p>
+          <p> · ⭐ {userStars.length}</p>
         </div>
 
         <div className="user-infos">
@@ -102,7 +94,7 @@ function UserPage() {
                       <div className="repo-language-color" style={{backgroundColor: stacksColors[repo.language]}}></div>
                       <span>{repo.language}</span>
                     </span> 
-                    : 
+                    :
                     null
                 }
                 {
@@ -124,7 +116,7 @@ function UserPage() {
                     null
                 }
                 <div style={{marginRight: "20px"}}>
-                  {formatDate(repo.updated_at)}
+                  {`Updated on ${convertTime(repo.updated_at)}`}
                 </div>
               </div>
 
