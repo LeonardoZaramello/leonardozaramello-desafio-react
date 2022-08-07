@@ -5,7 +5,7 @@ import '../Styles/UserPageStyle.css';
 import stacksColors from '../Utils/StacksColors';
 import gitforkedSvg from '../Images/forked.svg';
 import scaleSvg from '../Images/scale.svg';
-import { convertTime } from '../Utils/ConvertDateTime';
+import convertTime from '../Utils/ConvertDateTime';
 
 function UserPage() {
   const {userName} = useParams();
