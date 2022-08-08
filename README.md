@@ -5,23 +5,31 @@ Repositório destinado à entrega do desafio de Front-end.
 Link da página hospedada no Vercel: https://leonardozaramello-desafio-react.vercel.app/
 
 
-## Deploy
+## Rodando localmente
 
 Para subir o Front-end localmente siga os passos:
 
-##### Copie e cole o código em seu terminal
+Para clonar o projeto copie e cole o código abaixo em seu terminal:
 ```bash
 git clone git@github.com:LeonardoZaramello/leonardozaramello-desafio-react.git
 ```
-##### Execute o próximo comando na raíz do diretório clonado:
+ou
+```bash
+https://github.com/LeonardoZaramello/leonardozaramello-desafio-react.git
+```
+Entre no diretório clonado:
+```bash
+  cd leonardozaramello-desafio-react
+```
+Instale as dependências:
 ```bash
   npm install
 ```
-##### Assim que terminar de baixar as dependências, rode o projeto com:
+Inicie o projeto:
 ```bash
   npm start
 ```
-##### Se o projeto não abrir automaticamente em seu navegador, acesse:
+Se o projeto não abrir automaticamente em seu navegador, acesse:
 ```bash
   http://localhost:3000/
 ```
