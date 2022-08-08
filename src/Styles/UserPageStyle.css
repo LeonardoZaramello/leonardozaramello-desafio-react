@@ -24,15 +24,20 @@ img {
 }
 
 .left-container {
-  width: 250px;
+  width: 300px;
   align-items: center;
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-right: 25px;
 }
 
 .user-name-box {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
 }
 
 h5 {
@@ -63,6 +68,7 @@ h6 {
 .follows {
   display: flex;
   flex-wrap: wrap;
+  align-self: flex-start;
 }
 
 .follows > p{
@@ -70,10 +76,7 @@ h6 {
 }
 
 .user-infos {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  align-self: flex-start;
 }
 
 .user-infos > p {
@@ -81,15 +84,15 @@ h6 {
 }
 
 .bio-info {
+  align-self: flex-start;
   font-size: 15px;
 }
 
 .right-container {
-  width: 700px;
+  width: 70%;
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding-left: 50px;
 }
 
 .repo-nav {
