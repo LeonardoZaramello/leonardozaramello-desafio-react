@@ -34,7 +34,7 @@ Se o projeto não abrir automaticamente em seu navegador, acesse:
   http://localhost:3000/
 ```
 
-## Melhorias
+## Melhorias / Próximos passos
 
 - Testes
 
