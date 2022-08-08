@@ -15,52 +15,61 @@ function UserPage() {
   const [userFollowing, setUserFollowing] = useState([]);
   const [userStars, setUserStars] = useState([]);
   const [userRepositories, setUserRepositories] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
   console.log('renderizou');
 
   useEffect(() => {
 
     const fetchApi = async () => {
-      const [user, followers, following, stars, repositories] = await Promise.all([
-        axios.get(`https://api.github.com/users/${userName}`),
-        axios.get(`https://api.github.com/users/${userName}/followers`),
-        axios.get(`https://api.github.com/users/${userName}/following`),
-        axios.get(`https://api.github.com/users/${userName}/starred`),
-        axios.get(`https://api.github.com/users/${userName}/repos`)
-      ]);
-
-      setUserInfos(user.data);
-      setUserFollowers(followers.data);
-      setUserFollowing(following.data);
-      setUserStars(stars.data);
-      setUserRepositories(repositories.data);
+      try {
+        const [user, followers, following, stars, repositories] = await Promise.all([
+          axios.get(`https://api.github.com/users/${userName}`),
+          axios.get(`https://api.github.com/users/${userName}/followers`),
+          axios.get(`https://api.github.com/users/${userName}/following`),
+          axios.get(`https://api.github.com/users/${userName}/starred`),
+          axios.get(`https://api.github.com/users/${userName}/repos`)
+        ]);
+        
+        setUserInfos(user.data);
+        setUserFollowers(followers.data);
+        setUserFollowing(following.data);
+        setUserStars(stars.data);
+        setUserRepositories(repositories.data);
+      } catch (error) {
+        console.log(error);
+        setErrorMessage('Erro Buscando informações do usuário');
+        return null;
+      }
     }
-
+    
+    setErrorMessage('');
     fetchApi();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
   return(
+  
+    errorMessage.length > 0 ? <h1>{errorMessage}</h1>
+    :
     <div className="main-container">
+
+
+      {/* CONTAINER DA ESQUERDA */}
       <div className="left-container">
         <img src={`${userInfos.avatar_url}`} alt="user profile" />
-
         <div className="user-name-box">
           <h5>{userInfos.name}</h5>
           <h6>{userInfos.login}</h6>
         </div>
-
         <button className="follow-btn" type="button">Follow</button>
-
         <p className="bio-info">{userInfos.bio}</p>
-        
         <div className="follows">
           <p>👥{userFollowers.length} followers</p>
           <p> · {userFollowing.length} following</p>
           <p> · ⭐ {userStars.length}</p>
         </div>
-
         <div className="user-infos">
           <p>&#127758; {userInfos.location}</p>
           {
@@ -72,6 +81,8 @@ function UserPage() {
         </div>
       </div>
 
+
+      {/* CONTAINER DA DIREITA */}
       <div className="right-container">
         <nav>
           <div className='repo-nav'>
@@ -80,13 +91,11 @@ function UserPage() {
           </div>
         </nav>
         <hr className="nav-hr"/>
-
         {
           userRepositories.map((repo, index) => (
             <div className="repo-divs" key={index}>
               <h3>{repo.name}</h3>
               <p style={{fontSize: "14px"}}>{repo.description}</p>
-
               <div className="repo-infos">
                 {
                   repo.language ? 
@@ -119,14 +128,11 @@ function UserPage() {
                   {`Updated on ${convertTime(repo.updated_at)}`}
                 </div>
               </div>
-
               <hr />
             </div>
           ))
         }
-
       </div>
-
     </div>
   );
 }

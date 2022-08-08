@@ -14,15 +14,15 @@ function HomePage() {
   const checkInputSearch = async () => {
     if(userName.length > 0) {
       setErrorMessage('');
-      const exist = await axios.get(`https://api.github.com/users/${userName}`);
-      console.log(exist);
-      if(exist.data.name) {
+      try {
+        await axios.get(`https://api.github.com/users/${userName}`);
         goTo(`/${userName}`);
-      } else {
+      } catch (error) {
+        console.log(error);
         setErrorMessage('Usuário não encontrado no github. Verifique se você digitou o nome corretamente');
+        return null;
       }
     }
-
     setErrorMessage('informe um nome de usuário válido do github');
     return null;
   }
