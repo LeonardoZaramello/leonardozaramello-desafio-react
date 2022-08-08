@@ -26,7 +26,7 @@ function HomePage() {
 
   return(
     <div className="principal-container">
-      <h4>
+      <h4 className="search-text">
         Buscar Repositório no github
       </h4>
       <div className="search-container">
