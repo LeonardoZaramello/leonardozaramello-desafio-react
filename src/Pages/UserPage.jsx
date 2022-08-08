@@ -11,8 +11,6 @@ function UserPage() {
   const {userName} = useParams();
 
   const [userInfos, setUserInfos] = useState({});
-  const [userFollowers, setUserFollowers] = useState([]);
-  const [userFollowing, setUserFollowing] = useState([]);
   const [userStars, setUserStars] = useState([]);
   const [userRepositories, setUserRepositories] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
@@ -22,17 +20,13 @@ function UserPage() {
   useEffect(() => {
     const fetchApi = async () => {
       try {
-        const [user, followers, following, stars, repositories] = await Promise.all([
+        const [user, stars, repositories] = await Promise.all([
           axios.get(`${BASE_API_URL}/${userName}`),
-          axios.get(`${BASE_API_URL}/${userName}/followers`),
-          axios.get(`${BASE_API_URL}/${userName}/following`),
           axios.get(`${BASE_API_URL}/${userName}/starred`),
           axios.get(`${BASE_API_URL}/${userName}/repos`)
         ]);
         
         setUserInfos(user.data);
-        setUserFollowers(followers.data);
-        setUserFollowing(following.data);
         setUserStars(stars.data);
         setUserRepositories(repositories.data);
       } catch (error) {
@@ -66,17 +60,19 @@ function UserPage() {
         </p>
         <div className="follows">
           <p>
-            {`👥${userFollowers.length} followers`}
+            {`👥${userInfos.followers} followers`}
           </p>
           <p>
-            {` · ${userFollowing.length} following`}
+            {` · ${userInfos.following} following`}
           </p>
           <p>
             {` · ⭐ ${userStars.length}`}
           </p>
         </div>
         <div className="user-infos">
-          <p>{`🌎${userInfos.location}`}</p>
+          {
+            userInfos.location ? <p>{`🌎${userInfos.location}`}</p> : null
+          }
           {
             userInfos.email ? <p>{`✉${userInfos.email}`}</p> : null
           }
