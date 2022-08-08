@@ -8,12 +8,8 @@ function HomePage() {
   const [userName, setUserName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  console.log('renderizou');
-  console.log(userName);
-
   const checkInputSearch = async () => {
     if(userName.length > 0) {
-      setErrorMessage('');
       try {
         await axios.get(`https://api.github.com/users/${userName}`);
         goTo(`/${userName}`);
@@ -23,13 +19,16 @@ function HomePage() {
         return null;
       }
     }
+
     setErrorMessage('informe um nome de usuário válido do github');
     return null;
   }
 
   return(
     <div className="principal-container">
-      <h4>Buscar Repositório no github</h4>
+      <h4>
+        Buscar Repositório no github
+      </h4>
       <div className="search-container">
         <label htmlFor="github-input">
           <input
@@ -47,10 +46,12 @@ function HomePage() {
             onClick={ () => checkInputSearch() }
             type="button"
           >
-          🔍 Buscar
+          {`🔍 Buscar`}
         </button>
       </div>
-      <h6 style={{marginTop: "20px"}}>{errorMessage}</h6>
+      <h6 style={{marginTop: "20px"}}>
+        {`${errorMessage}`}
+      </h6>
     </div>
   );
 }
